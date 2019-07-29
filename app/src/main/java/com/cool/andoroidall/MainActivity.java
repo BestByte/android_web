@@ -19,6 +19,6 @@ public class MainActivity extends AppCompatActivity {
 
         webView.setWebViewClient(new WebViewClient());
 
-        webView.loadUrl("http://www.baidu.com");
+        webView.loadUrl("https://www.baidu.com/");
     }
 }
