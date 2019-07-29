@@ -9,6 +9,15 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.net.ssl.HttpsURLConnection;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView responseText;
@@ -32,6 +41,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void sendRequestWithHttpUrlConnection(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                HttpURLConnection connection=null;
+                BufferedReader reader=null;
+
+
+
+
+
+
+
+            }
+        });
 
     }
 }
