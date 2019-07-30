@@ -9,15 +9,22 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringReader;
+import java.net.ContentHandler;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLConnection;
 
 import javax.net.ssl.HttpsURLConnection;
+import javax.xml.parsers.SAXParserFactory;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -87,7 +94,21 @@ private  void  showResponse(final String response){
         });
 }
 
-private void parseXMLWithPull(string xmlData){
+private void parseXMLWithPull(String xmlData){
 
+}
+
+private  void parseXMLWithSAX(String xmlData){
+        try{
+            SAXParserFactory saxParserFactory=SAXParserFactory.newInstance();
+            XMLReader xmlReader=saxParserFactory.newSAXParser().getXMLReader();
+
+            ContentHandler contentHandler =new ContentHandler() ;
+            xmlReader.setContentHandler(contentHandler);
+            xmlReader.parse(new InputSource(new StringReader(xmlData)));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 }
 }
