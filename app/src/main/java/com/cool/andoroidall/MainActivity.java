@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                try {
                  OkHttpClient okHttpClient=new OkHttpClient();
                    Request request=new Request.Builder()
-                           .url("http://www.baidu.com")
+                           .url("https://www.baidu.com")
                            .build();
 
                    Response response=okHttpClient.newCall(request).execute();
