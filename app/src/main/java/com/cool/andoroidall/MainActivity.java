@@ -47,15 +47,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void run() {
                 HttpURLConnection connection=null;
                 BufferedReader reader=null;
-
-
-
-
-
-
-
             }
         });
 
+    }
+
+    private  void sendRequestWithOkHttp(){
+       new Thread(new Runnable() {
+           @Override
+           public void run() {
+               try {
+                   
+               }
+           }
+       });
     }
 }
