@@ -18,6 +18,10 @@ import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
 
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView responseText;
@@ -57,7 +61,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            @Override
            public void run() {
                try {
-                   
+                   OkHttpClient okHttpClient=new OkHttpClient();
+                   Request request=new Request.Builder().url("http://www.baidu.com").build();
+
+                   Response response=okHttpClient.newCall(request).execute();
                }
            }
        });
