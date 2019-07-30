@@ -9,6 +9,8 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.cool.andoroidall.web.xml.MyContentHandler;
+
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
@@ -17,7 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
-import java.net.ContentHandler;
+
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -72,12 +74,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                try {
                  OkHttpClient okHttpClient=new OkHttpClient();
                    Request request=new Request.Builder()
-                           .url("http://127.0.0.1/get_data.xml")
+                           .url("http://10.0.2.2/get_data.xml")
                            .build();
 
                    Response response=okHttpClient.newCall(request).execute();
                    String responseData=response.body().toString();
-                    showResponse(responseData);
+                    parseXMLWithSAX(responseData);
                }
                catch (IOException exception) {
                    exception.printStackTrace();
@@ -103,7 +105,7 @@ private  void parseXMLWithSAX(String xmlData){
             SAXParserFactory saxParserFactory=SAXParserFactory.newInstance();
             XMLReader xmlReader=saxParserFactory.newSAXParser().getXMLReader();
 
-            ContentHandler contentHandler =new ContentHandler() ;
+            MyContentHandler contentHandler =new MyContentHandler() ;
             xmlReader.setContentHandler(contentHandler);
             xmlReader.parse(new InputSource(new StringReader(xmlData)));
         }
