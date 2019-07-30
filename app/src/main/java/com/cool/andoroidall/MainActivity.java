@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public  void  onClick(View v) {
         if (v.getId() == R.id.send_request) {
-            sendRequestWithHttpUrlConnection();
+            //sendRequestWithHttpUrlConnection();
+            sendRequestWithOkHttp();
         }
     }
     private void sendRequestWithHttpUrlConnection(){
@@ -61,12 +63,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            @Override
            public void run() {
                try {
-                   OkHttpClient okHttpClient=new OkHttpClient();
-                   Request request=new Request.Builder().url("http://www.baidu.com").build();
+                 OkHttpClient okHttpClient=new OkHttpClient();
+                   Request request=new Request.Builder()
+                           .url("http://www.baidu.com")
+                           .build();
 
                    Response response=okHttpClient.newCall(request).execute();
+                   String responseData=response.body().toString();
+                    showResponse(responseData);
+               }
+               catch (IOException exception) {
+                   exception.printStackTrace();
                }
            }
-       });
+       }).start();
     }
+private  void  showResponse(final String response){
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                responseText.setText(response);
+            }
+        });
+}
+
 }
