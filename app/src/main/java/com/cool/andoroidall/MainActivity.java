@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                try {
                  OkHttpClient okHttpClient=new OkHttpClient();
                    Request request=new Request.Builder()
-                           .url("https://www.baidu.com")
+                           .url("http://127.0.0.1/get_data.xml")
                            .build();
 
                    Response response=okHttpClient.newCall(request).execute();
@@ -87,4 +87,7 @@ private  void  showResponse(final String response){
         });
 }
 
+private void parseXMLWithPull(string xmlData){
+
+}
 }
