@@ -77,13 +77,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                try {
                  OkHttpClient okHttpClient=new OkHttpClient();
                    Request request=new Request.Builder()
-                           .url("http://10.0.2.2/get_data.json")
+                           .url("http://10.0.2.2/get_data.xml")
                            .build();
 
                    Response response=okHttpClient.newCall(request).execute();
                    String responseData=response.body().string();
-                   // parseXMLWithSAX(responseData);
-                   parseJSONWithObject(responseData);
+                    parseXMLWithSAX(responseData);
+                 //  parseJSONWithObject(responseData);
                }
                catch (IOException exception) {
                    exception.printStackTrace();
