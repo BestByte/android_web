@@ -16,7 +16,12 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:id="@+id/send_request"
-           android:text="Change Text"/>
+           android:text="Send Request"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/change_text"
+            android:text="Change Text"/>
 
         <ScrollView
             android:layout_width="match_parent"
