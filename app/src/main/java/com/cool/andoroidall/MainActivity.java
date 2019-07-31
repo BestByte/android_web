@@ -3,6 +3,7 @@ package com.cool.andoroidall;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 import com.cool.andoroidall.web.xml.MyContentHandler;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
@@ -108,6 +111,22 @@ private  void parseXMLWithSAX(String xmlData){
             MyContentHandler contentHandler =new MyContentHandler() ;
             xmlReader.setContentHandler(contentHandler);
             xmlReader.parse(new InputSource(new StringReader(xmlData)));
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+}
+private void parseJSONWithObject(String jsonData){
+        try{
+            JSONArray jsonArray=new JSONArray(jsonData);
+            for (int i=0;i<jsonArray.length();i++){
+                JSONObject jsonObject=jsonArray.getJSONObject(i);
+                String id=jsonObject.getString("id");
+                String name=jsonObject.getString("name");
+                String version=jsonObject.getString("version");
+                Log.d("Main", "parseJSONWithObject: name is"+name);
+            }
+
         }
         catch (Exception e){
             e.printStackTrace();
