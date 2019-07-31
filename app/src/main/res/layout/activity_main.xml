@@ -16,7 +16,7 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:id="@+id/send_request"
-           android:text="Send Request"/>
+           android:text="Change Text"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -24,6 +24,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="Hello Wotld"
                 android:id="@+id/response_text"/>
         </ScrollView>
     </LinearLayout>
