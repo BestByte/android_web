@@ -10,8 +10,10 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.cool.andoroidall.web.gson.App;
 import com.cool.andoroidall.web.xml.MyContentHandler;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -79,13 +81,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                try {
                  OkHttpClient okHttpClient=new OkHttpClient();
                    Request request=new Request.Builder()
-                           .url("http://10.0.2.2/get_data.xml")
+                           .url("http://10.0.2.2/get_data.json")
                            .build();
 
                    Response response=okHttpClient.newCall(request).execute();
                    String responseData=response.body().string();
-                    parseXMLWithSAX(responseData);
+                    //parseXMLWithSAX(responseData);
                  //  parseJSONWithObject(responseData);
+                   parseJsonWithGSON(responseData);
                }
                catch (IOException exception) {
                    exception.printStackTrace();
@@ -138,6 +141,10 @@ private void parseJSONWithObject(String jsonData){
 
 private  void  parseJsonWithGSON(String jsonData){
     Gson gson=new Gson();
+List<App> appList=gson.fromJson(jsonData,new TypeToken<List<App>>(){}.getType());
 
+for (App app:appList){
+    Log.d("MainAvativity", "parseJsonWithGSON: name is :"+app.getName());
+}
 }
 }
