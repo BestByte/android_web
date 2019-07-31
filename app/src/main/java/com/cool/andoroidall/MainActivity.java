@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.cool.andoroidall.web.xml.MyContentHandler;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -27,6 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.xml.parsers.SAXParserFactory;
@@ -132,5 +134,10 @@ private void parseJSONWithObject(String jsonData){
         catch (Exception e){
             e.printStackTrace();
         }
+}
+
+private  void  parseJsonWithGSON(String jsonData){
+    Gson gson=new Gson();
+
 }
 }
