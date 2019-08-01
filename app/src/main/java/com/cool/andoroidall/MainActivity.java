@@ -41,8 +41,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    TextView responseText;
 
+    TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Button button=(Button) findViewById(R.id.send_request);
 
-        responseText=(TextView)findViewById(R.id.response_text);
-
+        //responseText=(TextView)findViewById(R.id.response_text);
+        text=(TextView)findViewById(R.id.thread_text);
+        Button changeText=(Button)findViewById(R.id.change_text);
+        changeText.setOnClickListener(this);
         button.setOnClickListener(this);
     }
 
@@ -60,6 +62,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.send_request) {
             //sendRequestWithHttpUrlConnection();
             sendRequestWithOkHttp();
+        }
+        if(v.getId()==R.id.change_text){
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    text.setText("Nice to meety you");
+                }
+            }).start();
         }
     }
     private void sendRequestWithHttpUrlConnection(){
@@ -100,7 +110,7 @@ private  void  showResponse(final String response){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                responseText.setText(response);
+                //responseText.setText(response);
             }
         });
 }
