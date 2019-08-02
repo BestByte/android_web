@@ -41,7 +41,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-
+public  static final int UPDATE_TEXT=1;
     TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
