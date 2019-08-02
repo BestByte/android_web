@@ -3,6 +3,8 @@ package com.cool.andoroidall;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
@@ -42,6 +44,16 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
 public  static final int UPDATE_TEXT=1;
+
+private Handler handler=new Handler(){
+    public  void  handleMessage(Message message){
+        switch (message.what){
+            case UPDATE_TEXT:
+                text.setText("nice to meet you");break;
+                default:break;
+        }
+    }
+};
     TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +79,10 @@ public  static final int UPDATE_TEXT=1;
             new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    text.setText("Nice to meety you");
+
+                    Message message=new Message();
+                    message.what=UPDATE_TEXT;
+                    handler.sendMessage(message);
                 }
             }).start();
         }
