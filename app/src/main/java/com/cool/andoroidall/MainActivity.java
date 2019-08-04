@@ -2,6 +2,7 @@ package com.cool.andoroidall;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -62,6 +63,11 @@ private Handler handler=new Handler(){
 
         Button button=(Button) findViewById(R.id.send_request);
 
+        Button startService=(Button)findViewById(R.id.start_service);
+        Button stopService=(Button)findViewById(R.id.stop_service);
+
+        startService.setOnClickListener(this);
+        stopService.setOnClickListener(this);
         //responseText=(TextView)findViewById(R.id.response_text);
         text=(TextView)findViewById(R.id.thread_text);
         Button changeText=(Button)findViewById(R.id.change_text);
@@ -86,6 +92,14 @@ private Handler handler=new Handler(){
                 }
             }).start();
         }
+
+        if (v.getId()==R.id.start_service){
+            Intent startIntent=new Intent(this,MyService.class);
+            startService(startIntent);
+        }
+        if(v.getId()==R.id.stop_service):
+        Intent stopIntent=new Intent(this,MyService.class);
+        stopService(stopIntent);
     }
     private void sendRequestWithHttpUrlConnection(){
 
