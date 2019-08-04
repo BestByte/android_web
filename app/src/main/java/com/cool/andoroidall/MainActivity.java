@@ -81,25 +81,26 @@ private Handler handler=new Handler(){
             //sendRequestWithHttpUrlConnection();
             sendRequestWithOkHttp();
         }
-        if(v.getId()==R.id.change_text){
+        if (v.getId() == R.id.change_text) {
             new Thread(new Runnable() {
                 @Override
                 public void run() {
 
-                    Message message=new Message();
-                    message.what=UPDATE_TEXT;
+                    Message message = new Message();
+                    message.what = UPDATE_TEXT;
                     handler.sendMessage(message);
                 }
             }).start();
         }
 
-        if (v.getId()==R.id.start_service){
-            Intent startIntent=new Intent(this,MyService.class);
+        if (v.getId() == R.id.start_service) {
+            Intent startIntent = new Intent(this, MyService.class);
             startService(startIntent);
         }
-        if(v.getId()==R.id.stop_service):
-        Intent stopIntent=new Intent(this,MyService.class);
-        stopService(stopIntent);
+        if (v.getId() == R.id.stop_service) {
+            Intent stopIntent = new Intent(this, MyService.class);
+            stopService(stopIntent);
+        }
     }
     private void sendRequestWithHttpUrlConnection(){
 
