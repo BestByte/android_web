@@ -22,7 +22,16 @@
             android:layout_height="wrap_content"
             android:id="@+id/change_text"
             android:text="Change Text"/>
-
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/start_service"
+            android:text="start service"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/stop_service"
+            android:text="start service"/>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
